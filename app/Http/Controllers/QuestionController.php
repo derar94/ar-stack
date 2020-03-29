@@ -14,7 +14,7 @@ class QuestionController extends Controller
      */
     public function index()
     {
-        $questions = question::with('answers')->paginate(3);
+        $questions = question::with('answers')->paginate(10);
         return $questions;
     }
 

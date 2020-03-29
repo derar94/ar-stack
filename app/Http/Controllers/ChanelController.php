@@ -16,6 +16,11 @@ class ChanelController extends Controller
     {
         //
     }
+    public function latest()
+    {
+        $chanels = chanel::orderBy('id','desc')->take(5)->get()->toArray();
+        return $chanels;
+    }
 
     /**
      * Show the form for creating a new resource.

@@ -23,8 +23,22 @@
         </div>
 
         <div class="column is-three-fifths">
-          <div class="hero">
-            <div v-for="question in questions" :key="question.id" class="card">
+          <div class="field has-addons">
+            <p class="control is-expanded">
+              <input class="input is-primary is-rounded" type="text" placeholder="Search questions" />
+            </p>
+            <p class="control">
+              <button class="button is-primary is-rounded">
+                <span class="icon">
+                  <i class="material-icons">search</i>
+                </span>
+                <span>Search</span>
+              </button>
+            </p>
+          </div>
+
+          <div v-for="question in questions" :key="question.id" class="level">
+            <div class="card">
               <header class="card-header">
                 <p class="card-header-title">{{question.title}}</p>
               </header>
@@ -36,12 +50,19 @@
         </div>
 
         <div class="column is-one-fifth">
-          <p class="menu-label">Latest Chanels</p>
-          <article class="message is-warning">
-            <div class="message-body">
-              Python
-           </div>
-          </article>
+          <nav class="panel is-danger">
+            <p class="panel-heading">Chanels</p>
+            <div class="panel-block">
+              <p class="control has-icons-left">
+                <input class="input is-rounded" type="text" placeholder="Search" />
+                <span class="icon is-left">
+                  <i class="material-icons">search</i>
+                </span>
+              </p>
+            </div>
+
+            <a v-for="chanel in chanels" :key="chanel.key" class="panel-block">{{chanel.name}}</a>
+          </nav>
         </div>
       </div>
     </div>
@@ -52,15 +73,27 @@
 export default {
   data() {
     return {
-      questions: []
+      questions: [],
+      chanels: []
     };
   },
   created() {
-    this.axios.get("http://localhost:8000/api/questions/all").then(response => {
-      console.log(response);
-      this.questions = response.data["data"];
-    });
+    this.getQuestions();
+    this.getChanels();
   },
-  methods: {}
+  methods: {
+    getQuestions() {
+      this.axios.get(route("questions.index")).then(response => {
+        console.log(response);
+        this.questions = response.data["data"];
+      });
+    },
+    getChanels() {
+      this.axios.get(route("chanels.latest")).then(response => {
+        console.log(response);
+        this.chanels = response.data;
+      });
+    }
+  }
 };
 </script>

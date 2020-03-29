@@ -35,10 +35,10 @@
           <div class="navbar-end">
             <div class="navbar-item">
               <div class="buttons">
-                <a class="button is-primary">
+                <a class="button is-bold is-link is-rounded">
                   <strong>Sign up</strong>
                 </a>
-                <a class="button is-light">Log in</a>
+                <a class="button is-link is-rounded">Log in</a>
               </div>
             </div>
           </div>
@@ -52,7 +52,7 @@
 export default {
   data() {
     return {
-      showNav : false
+      showNav: false
     };
   },
   computed: {}
