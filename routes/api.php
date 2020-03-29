@@ -18,7 +18,9 @@ use Illuminate\Support\Facades\Route;
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
-Route::get('questions','QuestionController@index');
 Route::group(['prefix'=>'questions'],function(){
+    Route::get('all','QuestionController@index');
+    Route::get('latest','QuestionController@latest');
+
 
 });

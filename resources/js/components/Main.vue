@@ -1,24 +1,65 @@
 <template>
-    <div>
-  <b-navbar class="mb-4" toggleable="md" type="light" variant="warning">
-    <b-navbar-brand href="#">ar-stack</b-navbar-brand>
+  <div>
+    <nav class="navbar is-white" role="navigation" aria-label="main navigation">
+      <div class="container">
+        <div class="navbar-brand">
+          <a class="navbar-item" href="https://bulma.io">
+            <img src="https://bulma.io/images/bulma-logo.png" width="112" height="28" />
+          </a>
 
-    <b-navbar-toggle target="nav-collapse"></b-navbar-toggle>
+          <a
+            role="button"
+            class="navbar-burger burger"
+            aria-label="menu"
+            aria-expanded="false"
+            data-target="navbarBasicExample"
+            @click="showNav = !showNav"
+            :class="{ 'is-active': showNav }"
+          >
+            <span aria-hidden="true"></span>
+            <span aria-hidden="true"></span>
+            <span aria-hidden="true"></span>
+          </a>
+        </div>
 
-    <b-collapse id="nav-collapse" is-nav>
-      <b-navbar-nav>
-        <b-nav-item href="#"><router-link class="nav-link" to="/">Home</router-link ></b-nav-item>
-        <b-nav-item href="#"><router-link class="nav-link" to="/questions">Questions</router-link></b-nav-item>
-      </b-navbar-nav>
-    </b-collapse>
-  </b-navbar>
-  <router-view></router-view>
-</div>
+        <div id="navbarBasicExample" class="navbar-menu" :class="{ 'is-active': showNav }">
+          <div class="navbar-start">
+            <router-link class="navbar-item" to="/">Home</router-link>
+            <router-link class="navbar-item" to="/questions">Questions</router-link>
+            <router-link class="navbar-item" to="/posts">Posts</router-link>
+            <router-link class="navbar-item" to="/projects">Projects</router-link>
+            <router-link class="navbar-item" to="/chanels">Chanels</router-link>
+            <router-link class="navbar-item" to="/offers">Offers</router-link>
+            <router-link class="navbar-item" to="/users">Users</router-link>
+          </div>
+          <div class="navbar-end">
+            <div class="navbar-item">
+              <div class="buttons">
+                <a class="button is-primary">
+                  <strong>Sign up</strong>
+                </a>
+                <a class="button is-light">Log in</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </nav>
+    <router-view></router-view>
+  </div>
 </template>
+<script>
+export default {
+  data() {
+    return {
+      showNav : false
+    };
+  },
+  computed: {}
+};
+</script>
 <style>
-  .nav-link
-  {
-    color:black;
-    font-weight: bold;
-  }
+.navbar {
+  border-bottom: 1px solid #eee;
+}
 </style>

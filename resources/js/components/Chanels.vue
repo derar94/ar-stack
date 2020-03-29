@@ -4,11 +4,8 @@
   <div class="hero-body">
     <div class="container has-text-centered">
       <h1 class="title">
-        Hello There
+        Chanels
       </h1>
-      <h2 class="subtitle">
-        Glad To see you
-      </h2>
     </div>
   </div>
 </section>

@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\question;
+use App\offer;
 use Illuminate\Http\Request;
 
-class QuestionController extends Controller
+class OfferController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,14 +14,7 @@ class QuestionController extends Controller
      */
     public function index()
     {
-        $questions = question::with('answers')->paginate(3);
-        return $questions;
-    }
-
-    public function latest()
-    {
-        $questions = question::with('answers')->limit(10)->get()->toArray();
-        return $questions;
+        //
     }
 
     /**
@@ -48,10 +41,10 @@ class QuestionController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\question  $question
+     * @param  \App\offer  $offer
      * @return \Illuminate\Http\Response
      */
-    public function show(question $question)
+    public function show(offer $offer)
     {
         //
     }
@@ -59,10 +52,10 @@ class QuestionController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\question  $question
+     * @param  \App\offer  $offer
      * @return \Illuminate\Http\Response
      */
-    public function edit(question $question)
+    public function edit(offer $offer)
     {
         //
     }
@@ -71,10 +64,10 @@ class QuestionController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\question  $question
+     * @param  \App\offer  $offer
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, question $question)
+    public function update(Request $request, offer $offer)
     {
         //
     }
@@ -82,10 +75,10 @@ class QuestionController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\question  $question
+     * @param  \App\offer  $offer
      * @return \Illuminate\Http\Response
      */
-    public function destroy(question $question)
+    public function destroy(offer $offer)
     {
         //
     }
