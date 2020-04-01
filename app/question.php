@@ -10,4 +10,8 @@ class question extends Model
     {
         return $this->hasMany('App\answer');
     }
+    public function user()
+    {
+        return $this->belongsTo('App\user');
+    }
 }

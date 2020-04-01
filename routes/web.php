@@ -6,7 +6,6 @@ Route::get('/', function () {
     return view('home');
 });
 
-
-Route::get('/vue/{vue_capture?}', function () {
-    return view('vue.index');
-   })->where('vue_capture', '[\/\w\.-]*');
+Route::get('{any}', function () {
+    return view('home');
+})->where('any','.*');

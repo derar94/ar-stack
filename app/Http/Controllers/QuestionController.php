@@ -14,8 +14,8 @@ class QuestionController extends Controller
      */
     public function index()
     {
-        $questions = question::with('answers')->paginate(10);
-        return $questions;
+        $questions = question::with('answers')->with('user')->orderBy('id','desc')->paginate(10);
+        return ($questions);
     }
 
     public function latest()

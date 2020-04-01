@@ -32,6 +32,8 @@
         "bulma": "^0.8.1",
         "vue": "^2.6.11",
         "vue-axios": "^2.1.5",
-        "vue-router": "^3.1.6"
+        "vue-content-loading": "^1.6.0",
+        "vue-router": "^3.1.6",
+        "vue-timeago": "^5.1.2"
     }
 }

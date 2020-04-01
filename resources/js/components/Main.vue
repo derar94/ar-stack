@@ -4,7 +4,7 @@
       <div class="container">
         <div class="navbar-brand">
           <a class="navbar-item" href="https://bulma.io">
-            <img src="https://bulma.io/images/bulma-logo.png" width="112" height="28" />
+            <img src="https://s.gravatar.com/avatar/9280e280f9f1960f5d15798230a8f22f?size=100&default=retro"  />
           </a>
 
           <a

@@ -1,34 +1,24 @@
 <template>
-  <section class="section">
+  <section style="margin-top:20px">
     <div class="container">
       <div class="columns">
-        <div class="column is-one-fifth">
-          <aside class="menu">
-            <p class="menu-label">Questions</p>
-            <ul class="menu-list">
-              <li>
-                <a class="is-active">Latest</a>
-              </li>
-              <li>
-                <a>Top</a>
-              </li>
-              <li>
-                <a>Not Answered</a>
-              </li>
-              <li>
-                <a>Ask</a>
-              </li>
-            </ul>
-          </aside>
+        <div class="column is-one-fifth is-hidden-mobile">
+          <nav class="panel is-warning">
+            <p class="panel-heading">Dashboard</p>
+            <a class="panel-block">New</a>
+            <a class="panel-block">Top</a>
+            <a class="panel-block">Not Answered</a>
+            <a class="panel-block">Ask New</a>
+          </nav>
         </div>
 
         <div class="column is-three-fifths">
           <div class="field has-addons">
             <p class="control is-expanded">
-              <input class="input is-primary is-rounded" type="text" placeholder="Search questions" />
+              <input class="input is-primary" type="text" placeholder="Search questions..." />
             </p>
             <p class="control">
-              <button class="button is-primary is-rounded">
+              <button class="button is-primary">
                 <span class="icon">
                   <i class="material-icons">search</i>
                 </span>
@@ -37,30 +27,100 @@
             </p>
           </div>
 
-          <div v-for="question in questions" :key="question.id" class="level">
-            <div class="card">
-              <header class="card-header">
-                <p class="card-header-title">{{question.title}}</p>
-              </header>
-              <div class="card-content">
-                <div class="content">{{question.body}}</div>
+          <div class="box" v-if="!readyquestions">
+            <facebook-loader></facebook-loader>
+          </div>
+          <div class="box" v-if="!readyquestions">
+            <facebook-loader></facebook-loader>
+          </div>
+          <div class="box" v-if="!readyquestions">
+            <facebook-loader></facebook-loader>
+          </div>
+          <div class="box" v-if="!readyquestions">
+            <facebook-loader></facebook-loader>
+          </div>
+          <div class="box" v-if="!readyquestions">
+            <facebook-loader></facebook-loader>
+          </div>
+          <div class="box" v-if="!readyquestions">
+            <facebook-loader></facebook-loader>
+          </div>
+          <div class="box" v-if="!readyquestions">
+            <facebook-loader></facebook-loader>
+          </div>
+          <div class="box" v-if="!readyquestions">
+            <facebook-loader></facebook-loader>
+          </div>
+          <div class="box" v-if="!readyquestions">
+            <facebook-loader></facebook-loader>
+          </div>
+
+          <div v-for="question in questions" :key="question.id" class="box">
+            <article class="media">
+              <figure class="media-left">
+                <p class="image is-128x128">
+                  <img src="https://bulma.io/images/placeholders/128x128.png" />
+                </p>
+                <br />
+                <nav class="level" style="justify-content:center">
+                  <div class="level-left">
+                    <a class="level-item">
+                      <span class="icon">
+                        <i class="material-icons has-text-primary">save</i>
+                      </span>
+                    </a>
+                    <a class="level-item">
+                      <span class="icon">
+                        <i class="material-icons has-text-danger">favorite</i>
+                      </span>
+                    </a>
+                    <a class="level-item">
+                      <span class="icon">
+                        <i class="material-icons">question_answer</i>
+                      </span>
+                    </a>
+                  </div>
+                </nav>
+              </figure>
+              <div class="media-content">
+                <div class="content">
+                  <p>
+                    <strong>{{question.user.name}}</strong>
+                    <small>{{question.user.email}}</small>
+                    <small>
+                      <timeago :datetime="question.created_at" :auto-update="60"></timeago>
+                    </small>
+                  </p>
+                  <h1 class="title is-5">{{question.title}}</h1>
+                  <div class="subtitle is-6">{{question.body}}</div>
+                </div>
               </div>
-            </div>
+              <div class="media-right">
+                <i class="material-icons has-text-warning">visibility</i>
+              </div>
+            </article>
           </div>
         </div>
 
-        <div class="column is-one-fifth">
+        <div class="column is-one-fifth is-hidden-mobile">
           <nav class="panel is-danger">
             <p class="panel-heading">Chanels</p>
             <div class="panel-block">
               <p class="control has-icons-left">
-                <input class="input is-rounded" type="text" placeholder="Search" />
+                <input class="input" type="text" placeholder="Search" />
                 <span class="icon is-left">
                   <i class="material-icons">search</i>
                 </span>
               </p>
             </div>
+            <div class="box" v-if="!readychanels">
+              <facebook-loader></facebook-loader>
+              <facebook-loader></facebook-loader>
+              <facebook-loader></facebook-loader>
 
+              <facebook-loader></facebook-loader>
+              <facebook-loader></facebook-loader>
+            </div>
             <a v-for="chanel in chanels" :key="chanel.key" class="panel-block">{{chanel.name}}</a>
           </nav>
         </div>
@@ -74,7 +134,9 @@ export default {
   data() {
     return {
       questions: [],
-      chanels: []
+      chanels: [],
+      readyquestions: false,
+      readychanels: false
     };
   },
   created() {
@@ -86,12 +148,14 @@ export default {
       this.axios.get(route("questions.index")).then(response => {
         console.log(response);
         this.questions = response.data["data"];
+        this.readyquestions = true;
       });
     },
     getChanels() {
       this.axios.get(route("chanels.latest")).then(response => {
         console.log(response);
         this.chanels = response.data;
+        this.readychanels = true;
       });
     }
   }
