@@ -11,8 +11,8 @@ class User extends Seeder
      */
     public function run()
     {
-        factory("App\User",100)->create()->each(function($q){
-            $q->questions()->saveMany(factory('App\question',5)->make());
+        factory("App\User",10)->create()->each(function($q){
+            $q->questions()->saveMany(factory('App\question',100)->make());
         });
     }
 }

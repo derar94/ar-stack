@@ -26,6 +26,8 @@
               </button>
             </p>
           </div>
+          <br>
+          <h1 v-if="readyquestions" class="title is-5">Showing <span class=" has-text-weight-bold has-text-primary">{{questions.length}}</span> Question</h1>
 
           <div class="box" v-if="!readyquestions">
             <facebook-loader></facebook-loader>

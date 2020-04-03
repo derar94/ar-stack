@@ -14,13 +14,13 @@ class QuestionController extends Controller
      */
     public function index()
     {
-        $questions = question::with('answers')->with('user')->orderBy('id','desc')->paginate(10);
+        $questions = question::with('answers')->with('user')->orderBy('id','desc')->paginate(10000);
         return ($questions);
     }
 
     public function latest()
     {
-        $questions = question::with('answers')->limit(10)->get()->toArray();
+        $questions = question::with('answers')->limit(10000)->get()->toArray();
         return $questions;
     }
 

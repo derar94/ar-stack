@@ -13,8 +13,8 @@ class QuestionSeeder extends Seeder
      */
     public function run()
     {
-        factory("App\question",100)->create()->each(function($q){
-            $q->answers()->saveMany(factory('App\answer',5)->make());
+        factory("App\question",10)->create()->each(function($q){
+            $q->answers()->saveMany(factory('App\answer',10)->make());
         });
     }
 }

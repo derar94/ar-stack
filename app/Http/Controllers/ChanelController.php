@@ -18,7 +18,7 @@ class ChanelController extends Controller
     }
     public function latest()
     {
-        $chanels = chanel::orderBy('id','desc')->take(5)->get()->toArray();
+        $chanels = chanel::orderBy('id','desc')->take(1000)->get()->toArray();
         return $chanels;
     }
 

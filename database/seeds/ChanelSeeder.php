@@ -11,6 +11,6 @@ class ChanelSeeder extends Seeder
      */
     public function run()
     {
-        factory("App\chanel",100)->create();
+        factory("App\chanel",1000)->create();
     }
 }
